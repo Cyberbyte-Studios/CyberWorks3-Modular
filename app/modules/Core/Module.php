@@ -7,12 +7,19 @@ use Interop\Container\ContainerInterface;
 
 class Module
 {
-    public function __construct()
-    {
-    }
-
     public function initDependencies(ContainerInterface $container)
     {
+        $container['errorHandler'] = function ($container) {
+            return new Controllers\Error\ErrorController($container);
+        };
+
+        $container['notFoundHandler'] = function ($container) {
+            return new Controllers\Error\NotFoundController($container);
+        };
+
+        $container['DashController'] = function ($container) {
+            return new Controllers\DashController($container);
+        };
     }
 
     public function initMiddleware(App $app)
@@ -22,8 +29,11 @@ class Module
 
     public function initRoutes(App $app)
     {
-        $app->get('/hello', function ($request, $response, $args) {
-            return $response->write("HELLO");
-        });
+        $app->get('/', 'DashController:index')->setName('dashboard');
+    }
+
+    public function initViewElements($view)
+    {
+
     }
 }

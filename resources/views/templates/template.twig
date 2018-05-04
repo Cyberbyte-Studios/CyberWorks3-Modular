@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+        <title>CyberWorks 3 | {% block title %} {% endblock %}</title>
+
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="{{ base_url() }}/assets/plugins/font-awesome/css/font-awesome.min.css">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{ base_url() }}/assets/css/adminlte.min.css">
+        <!-- Ion Icons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <!-- Google Font: Source Sans Pro -->
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+        {% block style %} {% endblock %}
+    </head>
+    <body class="hold-transition sidebar-mini">
+        <div class="wrapper">
+
+            {% include 'templates/partials/top_navigation.twig' %}
+
+            {% include 'templates/partials/sidebar_navigation.twig' %}
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0 text-dark">{% block content_title %} {% endblock %}</h1>
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                {% block content_header_col %} {% endblock %}
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                <!-- Main content -->
+                <div class="content">
+                    <div class="container-fluid">
+                        {% block main_content %} {% endblock %}
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="float-right d-none d-sm-inline">
+                    <b>Version</b> 2.0.0-alpha
+                </div>
+                <!-- Default to the left -->
+                CyberWorks 3 &copy;2017 <a href="https://cyberbyte.org.uk">Cyberbyte Studios</a>. Theme By <a href="https://colorlib.com/">Colorlib</a>. All Rights Reserved.
+            </footer>
+        </div>
+        <!-- ./wrapper -->
+
+        <!-- REQUIRED SCRIPTS -->
+
+        <!-- jQuery -->
+        <script src="{{ base_url() }}/assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap 4 -->
+        <script src="{{ base_url() }}/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ base_url() }}/assets/js/adminlte.min.js"></script>
+
+        {% block script %} {% endblock %}
+    </body>
+</html>

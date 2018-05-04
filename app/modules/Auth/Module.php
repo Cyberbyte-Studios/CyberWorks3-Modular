@@ -3,17 +3,15 @@
 namespace CyberWorks\Modules\Auth;
 
 use Slim\App;
-use MartynBiz\Slim3Module\AbstractModule;
+use Interop\Container\ContainerInterface;
 
-class Module extends AbstractModule
+class Module
 {
-    public function initClassLoader(ClassLoader $classLoader)
+    public function initDependencies(ContainerInterface $container)
     {
-        $classLoader->setPsr4("CyberWorks\\Modules\\Auth\\", __DIR__ . "/src");
-    }
-
-    public function initDependencies(Container $container)
-    {
+        $container['AuthController'] = function ($container) {
+            return new Controllers\AuthController($container);
+        };
     }
 
     public function initMiddleware(App $app)
@@ -22,6 +20,11 @@ class Module extends AbstractModule
     }
 
     public function initRoutes(App $app)
+    {
+
+    }
+
+    public function initViewElements($view)
     {
 
     }

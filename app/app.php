@@ -39,4 +39,33 @@ $container['translator'] = function ($container) {
     return $translator;
 };
 
+$container['view'] = function ($container) {
+    $view = new \Slim\Views\Twig(
+        __DIR__ . '/../resources/views',
+        [
+            'cache' => false,
+        ]
+    );
+    $view->addExtension(new \Slim\Views\TwigExtension(
+        $container->router,
+        $container->request->getUri()
+    ));
+
+    $view->addExtension(new \CyberWorks\Modules\Core\Extension\TranslationExtension(
+        $container->translator
+    ));
+
+    return $view;
+};
+
+$container['logger'] = function ($container) {
+    $logger = new \Monolog\Logger('cyberworks');
+    $logger->pushHandler(new \Monolog\Handler\StreamHandler(__DIR__ . '/../logs/cyberworks.log', \Monolog\Logger::INFO));
+    return $logger;
+};
+
+$container['csrf'] = function($container) {
+    return new \Slim\Csrf\Guard;
+};
+
 $loader = new ModuleLoader($app, $config->get("modules"));

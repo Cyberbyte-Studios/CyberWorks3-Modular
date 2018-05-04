@@ -25,5 +25,6 @@ class ModuleLoader
         $module->initDependencies($this->app->getContainer());
         $module->initMiddleware($this->app);
         $module->initRoutes($this->app);
+        $module->initViewElements($this->container->view);
     }
 }

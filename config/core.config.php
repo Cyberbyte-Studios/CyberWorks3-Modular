@@ -19,7 +19,8 @@ return [
         ],
     ],
     "modules" => [
-        '\CyberWorks\Modules\Core'
+        '\CyberWorks\Modules\Core',
+        '\CyberWorks\Modules\Auth'
     ],
     "development" => true
 ];
